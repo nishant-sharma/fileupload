@@ -2,8 +2,8 @@
 
 namespace FileUpload\Validator;
 
-use FileUpload\File;
 use FileUpload\Util;
+use FileUpload\File;
 
 class SizeValidator implements Validator
 {

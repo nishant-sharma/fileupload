@@ -2,12 +2,13 @@
 
 namespace FileUpload;
 
-use FileUpload\FileNameGenerator\FileNameGenerator;
-use FileUpload\FileNameGenerator\Simple;
-use FileUpload\FileSystem\FileSystem;
-use FileUpload\PathResolver\PathResolver;
-use FileUpload\Validator\Validator;
+use FileUpload\File;
 use Psr\Log\LoggerInterface;
+use FileUpload\Validator\Validator;
+use FileUpload\FileSystem\FileSystem;
+use FileUpload\FileNameGenerator\Simple;
+use FileUpload\PathResolver\PathResolver;
+use FileUpload\FileNameGenerator\FileNameGenerator;
 
 class FileUpload
 {
@@ -89,7 +90,7 @@ class FileUpload
      * @param array             $server
      * @param FileNameGenerator $generator
      */
-    public function __construct($upload, $server, FileNameGenerator $generator = null)
+    public function __construct($upload, $server, FileNameGenerator $generator)
     {
         $this->upload = isset($upload) ? $upload : null;
         $this->server = $server;

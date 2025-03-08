@@ -2,8 +2,8 @@
 
 namespace FileUpload\Validator;
 
-use FileUpload\File;
 use FileUpload\Util;
+use FileUpload\File;
 
 class Simple implements Validator
 {
@@ -57,7 +57,6 @@ class Simple implements Validator
         if ($this->max_size < 0 || $this->max_size == null) {
             throw new \Exception('invalid max_size value');
         }
-
     }
 
     /**

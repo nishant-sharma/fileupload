@@ -72,7 +72,6 @@ interface FileSystem
     /**
      * Clear filesize cache on disk
      * @param  string $path
-     * @return boolean
      */
     public function clearStatCache($path);
 

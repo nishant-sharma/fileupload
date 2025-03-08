@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: decola
@@ -8,10 +9,11 @@
 
 namespace FileUpload\FileNameGenerator;
 
-use FileUpload\FileSystem\FileSystem;
-use FileUpload\FileUpload;
-use FileUpload\PathResolver\PathResolver;
 use FileUpload\Util;
+use FileUpload\FileUpload;
+use FileUpload\FileSystem\FileSystem;
+use FileUpload\PathResolver\PathResolver;
+use FileUpload\FileNameGenerator\FileNameGenerator;
 
 class Simple implements FileNameGenerator
 {
@@ -64,7 +66,7 @@ class Simple implements FileNameGenerator
             $name = $this->pathresolver->upcountName($name);
         }
 
-        $uploaded_bytes = Util::fixIntegerOverflow(intval($content_range[1] ?? $content_range[0]));
+        $uploaded_bytes = Util::fixIntegerOverflow(intval(isset($content_range[1]) ? $content_range[1] : $content_range[0]));
 
         while ($this->filesystem->isFile($this->pathresolver->getUploadPath($name))) {
             if ($uploaded_bytes == $this->filesystem->getFilesize($this->pathresolver->getUploadPath($name))) {

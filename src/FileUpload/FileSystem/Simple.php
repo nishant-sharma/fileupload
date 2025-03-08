@@ -81,7 +81,7 @@ class Simple implements FileSystem
      */
     public function clearStatCache($path)
     {
-        return clearstatcache(true, $path);
+        clearstatcache(true, $path);
     }
 
     /**

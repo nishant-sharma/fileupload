@@ -3,8 +3,8 @@
 
 namespace FileUpload\FileNameGenerator;
 
-use FileUpload\FileUpload;
 use FileUpload\Util;
+use FileUpload\FileUpload;
 
 class Random implements FileNameGenerator
 {
@@ -62,12 +62,16 @@ class Random implements FileNameGenerator
      */
     protected function getUniqueFilename($name, $type, $index, $content_range, $extension)
     {
+        if (! is_array($content_range)) {
+            $content_range = [0];
+        }
+
         $name = $this->generateRandom() . "." . $extension;
         while ($this->filesystem->isDir($this->pathresolver->getUploadPath($name))) {
             $name = $this->generateRandom() . "." . $extension;
         }
 
-        $uploaded_bytes = Util::fixIntegerOverflow(intval($content_range[1]));
+        $uploaded_bytes = Util::fixIntegerOverflow(intval(isset($content_range[1]) ? $content_range[1] : $content_range[0]));
 
         while ($this->filesystem->isFile($this->pathresolver->getUploadPath($name))) {
             if ($uploaded_bytes == $this->filesystem->getFilesize($this->pathresolver->getUploadPath($name))) {

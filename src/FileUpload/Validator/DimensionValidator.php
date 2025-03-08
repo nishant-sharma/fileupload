@@ -3,6 +3,7 @@
 namespace FileUpload\Validator;
 
 use FileUpload\File;
+use FileUpload\Validator\Validator;
 
 class DimensionValidator implements Validator
 {

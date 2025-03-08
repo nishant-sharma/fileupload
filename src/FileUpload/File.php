@@ -5,6 +5,16 @@ namespace FileUpload;
 class File extends \SplFileInfo
 {
     /**
+     * @var string
+     */
+    public $name = '';
+
+    /**
+     * @var int
+     */
+    public $size = 0;
+
+    /**
      * Preset no errors
      * @var mixed
      */
