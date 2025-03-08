@@ -1,5 +1,5 @@
 {
-  "name": "gargron/fileupload",
+  "name": "nishant-sharma/fileupload",
   "description": "File uploading library capable of handling large/chunked/multiple file uploads",
   "license": "MIT",
   "autoload": {
