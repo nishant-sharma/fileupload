@@ -90,7 +90,7 @@ class FileUpload
      * @param array             $server
      * @param FileNameGenerator $generator
      */
-    public function __construct($upload, $server, FileNameGenerator $generator)
+    public function __construct($upload, $server, FileNameGenerator $generator = null)
     {
         $this->upload = isset($upload) ? $upload : null;
         $this->server = $server;
