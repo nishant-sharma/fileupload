@@ -2,10 +2,10 @@
 
 namespace FileUpload;
 
-use FileUpload\FileNameGenerator;
+use FileUpload\Validator\Validator;
 use FileUpload\FileSystem\FileSystem;
 use FileUpload\PathResolver\PathResolver;
-use FileUpload\Validator\Validator;
+use FileUpload\FileNameGenerator\FileNameGenerator;
 
 class FileUploadFactory
 {
@@ -29,7 +29,7 @@ class FileUploadFactory
 
     /**
      * FileNameGenerator to be used in the factory
-     * @var FileNameGenerator\FileNameGenerator
+     * @var FileNameGenerator
      */
     protected $fileNameGenerator;
 
@@ -38,13 +38,13 @@ class FileUploadFactory
      * @param PathResolver $pathresolver
      * @param FileSystem $filesystem
      * @param array $validators
-     * @param FileNameGenerator\FileNameGenerator|null $fileNameGenerator
+     * @param FileNameGenerator|null $fileNameGenerator
      */
     public function __construct(
         PathResolver $pathresolver,
         FileSystem $filesystem,
         $validators = [],
-        FileNameGenerator\FileNameGenerator $fileNameGenerator = null
+        FileNameGenerator|null $fileNameGenerator = null
     ) {
         $this->pathresolver = $pathresolver;
         $this->filesystem = $filesystem;
