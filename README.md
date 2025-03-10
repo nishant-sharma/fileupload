@@ -18,7 +18,7 @@ This package is available via Composer:
 ```json
 {
   "require": {
-    "gargron/fileupload": "~1.4.0"
+    "nishant-sharma/fileupload": "^1.0"
   }
 }
 ```
