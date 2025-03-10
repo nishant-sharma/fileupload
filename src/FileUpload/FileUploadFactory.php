@@ -44,7 +44,7 @@ class FileUploadFactory
         PathResolver $pathresolver,
         FileSystem $filesystem,
         $validators = [],
-        FileNameGenerator|null $fileNameGenerator = null
+        ?FileNameGenerator $fileNameGenerator = null
     ) {
         $this->pathresolver = $pathresolver;
         $this->filesystem = $filesystem;
