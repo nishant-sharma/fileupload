@@ -43,16 +43,18 @@ class File extends \SplFileInfo
      */
     public $completed = false;
 
-    public function __construct($fileName, $clientFileName = '')
+    public function __construct($fileName, $clientFileName = '', $type = '')
     {
-        $this->setMimeType($fileName);
+        $this->setMimeType($type, $fileName);
         $this->clientFileName = $clientFileName;
         parent::__construct($fileName);
     }
 
-    protected function setMimeType($fileName)
+    protected function setMimeType($type, $fileName)
     {
-        if (file_exists($fileName)) {
+    	if(!empty($type)) {
+    		$this->mimeType = $type;
+        } else if (file_exists($fileName)) {
             $this->mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $fileName);
         }
     }

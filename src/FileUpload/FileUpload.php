@@ -263,7 +263,7 @@ class FileUpload
                     // $this->fileContainer is empty at this point
                     // $upload['tmp_name'] is also empty
                     // So we create a File instance from $upload['name']
-                    $file = new File($upload['name'], basename($upload['name']));
+                    $file = new File($upload['name'], basename($upload['name']), isset($upload['type']) ? $upload['type'] : $this->getContentType());
                     $file->error = $this->getMessage($upload['error']);
                     $file->errorCode = $upload['error'];
                     $this->files[] = $file;
@@ -308,7 +308,7 @@ class FileUpload
      */
     protected function process($tmp_name, $name, $size, $type, $error, $index = 0, $content_range = null)
     {
-        $this->fileContainer = $file = new File($tmp_name, $name);
+        $this->fileContainer = $file = new File($tmp_name, $name, $type);
         $file->name = $this->getFilename($name, $type, $index, $content_range, $tmp_name);
         $file->size = $this->fixIntegerOverflow(intval($size));
         $completed = false;
@@ -358,7 +358,7 @@ class FileUpload
                     }
                 }
 
-                $file = new File($file_path, $name);
+                $file = new File($file_path, $name, $type);
                 $file->completed = $completed;
                 $file->size = $file_size;
 
